@@ -9,7 +9,7 @@
 <br>脚本在centos7上测试通过，其他发行版未测试。
 ## 使用方法
 ````
-wget -N --no-check-certificate https://raw.githubusercontent.com/maxzh0916/Shadowsowcks1Click/master/Shadowsowcks1Click.sh;chmod +x Shadowsowcks1Click.sh;./Shadowsowcks1Click.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/BrownRhined/SSRInstallScript/master/Shadowsowcks1Click.sh;chmod +x Shadowsowcks1Click.sh;./Shadowsowcks1Click.sh
 ````
 <br>复制上方代码并执行开始安装。
 ## 脚本功能
