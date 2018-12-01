@@ -12,7 +12,7 @@ install_ssr(){
   	rm -rf libsodium-1.0.16.tar.gz
 	echo 'libsodium inatall complete!'
   	git clone -b master https://github.com/BrownRhined/SSRInstallScript.git && mv SSRInstallScript shadowsocksr && cd shadowsocksr && chmod +x ./initcfg.sh && ./initcfg.sh
-	install python-devel libffi-devel openssl-devel -y
+	yum install python-devel libffi-devel openssl-devel -y
 	pip install shadowsocks
 	pip install urllib3==1.20
 	pip install cymysql==0.8.9
@@ -28,6 +28,7 @@ install_ssr(){
 	service iptables stop
 	service firewalld stop
 	systemctl disable firewalld.service
+	systemctl stop firewalld.service
 	chkconfig iptables off
 	echo '已关闭iptables、firewalld，如有需要请自行配置。'
 }
