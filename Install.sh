@@ -11,16 +11,16 @@ install_ssr(){
   	cd /root/
   	rm -rf libsodium-1.0.16.tar.gz
 	echo 'libsodium inatall complete!'
-  	git clone -b master https://github.com/BrownRhined/SSRInstallScript.git && mv SSRInstallScript shadowsocksr && cd shadowsocksr && chmod +x ./initcfg.sh && ./initcfg.sh
 	yum install python-devel libffi-devel openssl-devel -y
-	pip install shadowsocks
+  	git clone -b master https://github.com/BrownRhined/SSRInstallScript.git && mv SSRInstallScript shadowsocksr && cd shadowsocksr && chmod +x ./initcfg.sh && ./initcfg.sh
+	#pip install shadowsocks
 	pip install urllib3==1.20
 	pip install cymysql==0.8.9
 	pip install requests==2.13.0
 	pip install pyOpenSSL==17.5.0
 	pip install ndg-httpsclient==0.4.2
 	pip install pyasn1==0.2.2
-	pip install requests
+	pip install requests==2.9
 	
 	rm -rf Install.sh
 	echo 'ssr inatall complete!'
