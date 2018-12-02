@@ -11,6 +11,7 @@ install_ssr(){
   	cd /root/
   	rm -rf libsodium-1.0.16.tar.gz
 	echo 'libsodium inatall complete!'
+	yum -y install python-setuptools && easy_install pip
 	yum install python-devel libffi-devel openssl-devel -y
   	git clone -b master https://github.com/BrownRhined/SSRInstallScript.git && mv SSRInstallScript shadowsocksr && cd shadowsocksr && chmod +x ./initcfg.sh && ./initcfg.sh
 	#pip install shadowsocks
@@ -54,7 +55,6 @@ auto_reboot(){
 	service crond start
 }
 
-yum -y install python-setuptools && easy_install pip
 yum -y install git wget
 yum -y groupinstall "Development Tools"
 clear
