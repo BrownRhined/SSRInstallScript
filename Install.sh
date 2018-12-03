@@ -31,7 +31,7 @@ install_ssr(){
 	systemctl disable firewalld.service
 	systemctl stop firewalld.service
 	chkconfig iptables off
-	echo '已关闭iptables、firewalld，如有需要请自行配置。'
+	echo 'stop iptables、firewalld。'
 }
 
 open_bbr(){
@@ -58,10 +58,10 @@ auto_reboot(){
 yum -y install git wget
 yum -y groupinstall "Development Tools"
 clear
-echo ' 注意：此脚本基于centos7编写，其他系统可能会出问题'
+echo ' Note: This script is written based on centos7, other systems may have problems'
 echo ' 1. Install SSR'
 echo ' 2. Install BBR'
-echo ' 3. 设置定时重启（测试中）'
+echo ' 3. Set scheduled restart (testing)'
 stty erase '^H' && read -p " Please Input Number [1-3]:" num
 case "$num" in
 	1)
