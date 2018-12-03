@@ -1,4 +1,4 @@
-# Shadowsowcks1Click
+# ShadowsocksR auto install
 ## 特別感謝
 修改自Hao-Luo大佬的SSR腳本！
 <br>https://github.com/Hao-Luo/
