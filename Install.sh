@@ -17,7 +17,7 @@ install_ssr(){
 	#pip install shadowsocks
 	pip install urllib3==1.20
 	pip install cymysql==0.8.9
-	pip install requests==2.13.0
+	pip install requests==2.20.0
 	pip install pyOpenSSL==17.5.0
 	pip install ndg-httpsclient==0.4.2
 	pip install pyasn1==0.2.2
