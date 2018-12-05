@@ -21,7 +21,7 @@ install_ssr(){
 	pip install pyOpenSSL==17.5.0
 	pip install ndg-httpsclient==0.4.2
 	pip install pyasn1==0.2.2
-	pip install requests==2.9
+	pip install requests
 	
 	rm -rf Install.sh
 	echo 'ssr inatall complete!'
