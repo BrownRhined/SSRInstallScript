@@ -9,7 +9,9 @@
 <br>腳本在centos7上測試通過，其他發行版未測試。
 ## 使用方法
 ````
-wget -N --no-check-certificate https://raw.githubusercontent.com/BrownRhined/SSRInstallScript/master/Install.sh;chmod +x Install.sh;./Install.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/BrownRhined/SSRInstallScript/master/Install.sh
+chmod +x Install.sh
+./Install.sh
 ````
 <br>複製上方代碼並執行開始安裝。
 ##腳本功能
