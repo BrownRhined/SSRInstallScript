@@ -43,6 +43,15 @@ install_supervisord(){
 	chkconfig supervisord on
 	wget https://github.com/glzjin/ssshell-jar/raw/master/supervisord.conf -O /etc/supervisord.conf
 	wget https://github.com/glzjin/ssshell-jar/raw/master/supervisord -O /etc/init.d/supervisord
+	echo 'setting supervisord'
+echo "[program:ssr]
+command=python /root/shadowsocksr/server.py 
+autorestart=true
+autostart=true
+user=root" > /etc/supervisord.conf
+echo "ulimit -n 1024000" >> /etc/init.d/supervisord
+service supervisord restart
+echo 'supervisord inatall complete!'
 }
 
 open_bbr(){
