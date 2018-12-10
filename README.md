@@ -20,7 +20,8 @@ chmod +x Install.sh
 2.選擇安裝功能，
   1）SSR
   2）BBR
-  3）定時重啟節點
+  3）安裝守護程序
+  4）定時重啟節點
 3.BBR安装之後需要reboot。
 4.SSR安装之後請手動更改配置即可。
 配置文件 userapiconfig.py
@@ -36,4 +37,8 @@ SSR节点ID（nodeid）:前端建立节点时的ID。
 混淆（obfs）：SSR的混淆插件，plain等。
 5.配置完成會關閉iptables、firewalld，大佬請自行设置。
 6.輸入 pthon server.py 進行測試
+````
+##腳本功能
+````
+
 ````
