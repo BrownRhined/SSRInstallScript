@@ -81,7 +81,8 @@ clear
 echo ' Note: This script is written based on centos7, other systems may have problems'
 echo ' 1. Install SSR'
 echo ' 2. Install BBR'
-echo ' 3. Set scheduled restart (testing)'
+echo ' 3. Install Supervisord'
+echo ' 4. Set scheduled restart (testing)'
 stty erase '^H' && read -p " Please Input Number [1-4]:" num
 case "$num" in
 	1)
