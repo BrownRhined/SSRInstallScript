@@ -34,6 +34,14 @@ install_ssr(){
 	echo 'stop iptables、firewalld。'
 }
 
+install_supervisord(){
+	clear
+	cd
+	wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh
+	chmod +x bbr.sh
+	./bbr.sh
+}
+
 open_bbr(){
 	clear
 	cd
@@ -62,7 +70,7 @@ echo ' Note: This script is written based on centos7, other systems may have pro
 echo ' 1. Install SSR'
 echo ' 2. Install BBR'
 echo ' 3. Set scheduled restart (testing)'
-stty erase '^H' && read -p " Please Input Number [1-3]:" num
+stty erase '^H' && read -p " Please Input Number [1-4]:" num
 case "$num" in
 	1)
 	install_ssr
@@ -71,9 +79,12 @@ case "$num" in
 	open_bbr
 	;;
 	3)
+	install_supervisord
+	;;
+	4)
 	auto_reboot
 	;;
 	*)
-	echo 'Please Input Number[1-3]'
+	echo 'Please Input Number[1-4]'
 	;;
 esac
