@@ -37,6 +37,12 @@ install_ssr(){
 install_supervisord(){
 	clear
 	cd /root/
+	rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm --quiet
+	yum install supervisor python-pip -y
+	pip install supervisor==3.1
+	chkconfig supervisord on
+	wget https://github.com/glzjin/ssshell-jar/raw/master/supervisord.conf -O /etc/supervisord.conf
+	wget https://github.com/glzjin/ssshell-jar/raw/master/supervisord -O /etc/init.d/supervisord
 }
 
 open_bbr(){
