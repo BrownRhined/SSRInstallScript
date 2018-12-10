@@ -64,13 +64,13 @@ open_bbr(){
 
 auto_reboot(){
 	clear
-	echo '设置每天几点几分重启节点'
-	stty erase '^H' && read -p " 小时(0-23):" hour
-	stty erase '^H' && read -p " 分钟(0-59):" minute
+	echo 'setting every day restart SSR node'
+	stty erase '^H' && read -p " hour(0-23):" hour
+	stty erase '^H' && read -p " minute(0-59):" minute
 	chmod +x /etc/rc.d/rc.local
 	echo /sbin/service crond start >> /etc/rc.d/rc.local
 	echo "/root/shadowsocksr/run.sh" >> /etc/rc.d/rc.local
-	echo '设置开机运行SSR'
+	echo 'setting power on run SSR'
 	echo "$minute $hour * * * root /sbin/reboot" >> /etc/crontab
 	service crond start
 }
