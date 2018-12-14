@@ -28,8 +28,8 @@ install_ssr(){
 	cd /root/
 	service iptables stop
 	service firewalld stop
-	systemctl disable firewalld.service
 	systemctl stop firewalld.service
+	systemctl disable firewalld.service
 	chkconfig iptables off
 	echo 'stop iptables、firewalld。'
 }
