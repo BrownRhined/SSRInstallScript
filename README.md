@@ -38,7 +38,13 @@ SSR节点ID（nodeid）:前端建立节点时的ID。
 5.配置完成會關閉iptables、firewalld，大佬請自行设置。
 6.輸入 pthon server.py 進行測試
 ````
-##腳本功能
+##建议關閉 SELinux:
 ````
-
+vi /etc/selinux/config
+SELINUX=enforce
+改為
+SELINUX=disabled
+另外將 “SELINUXTYPE=targeted” 加上註釋
+# SELINUXTYPE=targeted
+要檢查 SELinux 的狀態, 執行 sestatus 指令便可以看到
 ````
