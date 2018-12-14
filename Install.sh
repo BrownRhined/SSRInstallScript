@@ -28,8 +28,8 @@ install_ssr(){
 	cd /root/
 	iptables -I INPUT -p tcp -m tcp --dport 0-65535 -j ACCEPT
 	iptables -I INPUT -p udp -m udp --dport 0-65535 -j ACCEPT
-	service iptables reload
 	iptables-save
+	service iptables reload
 	service iptables stop
 	service firewalld stop
 	systemctl stop firewalld.service
