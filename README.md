@@ -13,6 +13,10 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/BrownRhined/SSR
 chmod +x Install.sh
 ./Install.sh
 ````
+
+````
+bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/SSRInstallScript/master/Install.sh)"
+````
 <br>複製上方代碼並執行開始安裝。
 ##腳本功能
 ````
