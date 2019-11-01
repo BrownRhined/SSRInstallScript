@@ -22,6 +22,7 @@ install_ssr(){
 	pip install ndg-httpsclient==0.4.2
 	pip install pyasn1==0.2.2
 	#pip install requests==2.9
+	echo "precedence ::ffff:0:0/96 100">>/etc/gai.conf
 	
 	rm -rf Install.sh
 	echo 'ssr inatall complete!'
