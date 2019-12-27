@@ -1,5 +1,36 @@
 #!/bin/bash
 [ $(id -u) != "0" ] && { echo "Error: You must be root to run this script"; exit 1; }
+function Colorset() {
+  #顏色配置
+  echo=echo
+  for cmd in echo /bin/echo; do
+    $cmd >/dev/null 2>&1 || continue
+    if ! $cmd -e "" | grep -qE '^-e'; then
+      echo=$cmd
+      break
+    fi
+  done
+  CSI=$($echo -e "\033[")
+  CEND="${CSI}0m"
+  CDGREEN="${CSI}32m"
+  CRED="${CSI}1;31m"
+  CGREEN="${CSI}1;32m"
+  CYELLOW="${CSI}1;33m"
+  CBLUE="${CSI}1;34m"
+  CMAGENTA="${CSI}1;35m"
+  CCYAN="${CSI}1;36m"
+  CSUCCESS="$CDGREEN"
+  CFAILURE="$CRED"
+  CQUESTION="$CMAGENTA"
+  CWARNING="$CYELLOW"
+  CMSG="$CCYAN"
+}
+
+function Logprefix() {
+  輸出log
+  echo -n ${CGREEN}'CraftYun >> '
+}
+
 install_ssr(){
 	clear
 	cd /root/
@@ -79,28 +110,16 @@ auto_reboot(){
 	echo "$minute $hour * * * root /sbin/reboot" >> /etc/crontab
 	service crond start
 }
- AliYunServicesClear01(){
+ AliYunServicesClear(){
 	clear
 	cd
 	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/uninstall.sh)"
 }
- AliYunServicesClear02(){
-	clear
-	cd
-	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/uninstall2.sh)"
-}
- AliYunServicesClear03(){
-	clear
-	cd
-	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/quartz_uninstall.sh)"
-}
- AliYunServicesClear04(){
-	clear
-	cd
-	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/aliyunDUN_uninstall.sh)"
-}
 
+Colorset
+Logprefix;echo ${CYELLOW}'[INFO]Install wget, git!'${CEND}
 yum -y install git wget
+Logprefix;echo ${CYELLOW}'[INFO]Install Development Tools'${CEND}
 yum -y groupinstall "Development Tools"
 clear
 echo ' Note: This script is written based on centos7, other systems may have problems'
@@ -108,11 +127,8 @@ echo ' 1. Install SSR'
 echo ' 2. Install BBR'
 echo ' 3. Install Supervisord'
 echo ' 4. Set scheduled restart'
-echo ' 5. AliYunServicesClear01'
-echo ' 6. AliYunServicesClear02'
-echo ' 7. AliYunServicesClear03'
-echo ' 8. AliYunServicesClear04'
-stty erase '^H' && read -p " Please Input Number [1-8]:" num
+echo ' 5. AliYunServicesClear'
+stty erase '^H' && read -p " Please Input Number [1-5]:" num
 case "$num" in
 	1)
 	install_ssr
@@ -127,18 +143,9 @@ case "$num" in
 	auto_reboot
 	;;
 	5)
-	AliYunServicesClear01
-	;;
-	6)
-	AliYunServicesClear02
-	;;
-	7)
-	AliYunServicesClear03
-	;;
-	8)
-	AliYunServicesClear04
+	AliYunServicesClear
 	;;
 	*)
-	echo 'Please Input Number[1-8]'
+	echo 'Please Input Number[1-5]'
 	;;
 esac
