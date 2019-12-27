@@ -79,6 +79,26 @@ auto_reboot(){
 	echo "$minute $hour * * * root /sbin/reboot" >> /etc/crontab
 	service crond start
 }
+ AliYunServicesClear01(){
+	clear
+	cd
+	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/uninstall.sh)"
+}
+ AliYunServicesClear02(){
+	clear
+	cd
+	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/uninstall2.sh)"
+}
+ AliYunServicesClear03(){
+	clear
+	cd
+	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/quartz_uninstall.sh)"
+}
+ AliYunServicesClear04(){
+	clear
+	cd
+	bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/AliYunServicesClear/master/aliyunDUN_uninstall.sh)"
+}
 
 yum -y install git wget
 yum -y groupinstall "Development Tools"
@@ -87,8 +107,12 @@ echo ' Note: This script is written based on centos7, other systems may have pro
 echo ' 1. Install SSR'
 echo ' 2. Install BBR'
 echo ' 3. Install Supervisord'
-echo ' 4. Set scheduled restart (testing)'
-stty erase '^H' && read -p " Please Input Number [1-4]:" num
+echo ' 4. Set scheduled restart'
+echo ' 5. AliYunServicesClear01'
+echo ' 6. AliYunServicesClear02'
+echo ' 7. AliYunServicesClear03'
+echo ' 8. AliYunServicesClear04'
+stty erase '^H' && read -p " Please Input Number [1-8]:" num
 case "$num" in
 	1)
 	install_ssr
@@ -102,7 +126,19 @@ case "$num" in
 	4)
 	auto_reboot
 	;;
+	5)
+	AliYunServicesClear01
+	;;
+	6)
+	AliYunServicesClear02
+	;;
+	7)
+	AliYunServicesClear03
+	;;
+	8)
+	AliYunServicesClear04
+	;;
 	*)
-	echo 'Please Input Number[1-4]'
+	echo 'Please Input Number[1-8]'
 	;;
 esac
