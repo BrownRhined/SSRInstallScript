@@ -28,7 +28,7 @@ function Colorset() {
 
 function Logprefix() {
   輸出log
-  echo -n ${CGREEN}'CraftYun >> '
+  echo -n ${CGREEN}'WitMantoBot >> '
 }
 
 install_ssr(){
