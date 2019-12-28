@@ -27,8 +27,8 @@ function Colorset() {
 }
 
 function Logprefix() {
-  輸出log
-  echo -n ${CGREEN}'WitMantoBot >> '
+  #輸出log
+  echo -n 'WitMantoBot >> '
 }
 
 install_ssr(){
@@ -41,22 +41,35 @@ install_ssr(){
   	ldconfig
   	cd /root/
   	rm -rf libsodium-1.0.16.tar.gz
-	echo 'libsodium inatall complete!'
+	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' libsodium inatall complete!'
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install python-setuptools, pip!'
 	yum -y install python-setuptools && easy_install pip
+	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' python-setuptools, pip inatall complete!'
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install python-devel, libffi-devel, openssl-devel!'
 	yum install python-devel libffi-devel openssl-devel -y
+	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' python-devel, libffi-devel, openssl-devel inatall complete!'
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Clone shadowsocksr!'
   	git clone -b master https://github.com/BrownRhined/SSRInstallScript.git && mv SSRInstallScript shadowsocksr && cd shadowsocksr && chmod +x ./initcfg.sh && ./initcfg.sh
+  	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' Shadowsocksr clone complete!'
 	#pip install shadowsocks
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install urllib3==1.20!'
 	pip install urllib3==1.20
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install cymysql==0.8.9!'
 	pip install cymysql==0.8.9
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install requests==2.13.0!'
 	pip install requests==2.13.0
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install pyOpenSSL==17.5.0!'
 	pip install pyOpenSSL==17.5.0
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install ndg-httpsclient==0.4.2!'
 	pip install ndg-httpsclient==0.4.2
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install pyasn1==0.2.2!'
 	pip install pyasn1==0.2.2
 	#pip install requests==2.9
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' IPv4 over IPv6 !'
 	echo "precedence ::ffff:0:0/96 100">>/etc/gai.conf
 	
 	rm -rf Install.sh
-	echo 'ssr inatall complete!'
+	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' SSR inatall complete!'
 	cd /root/
 	iptables -I INPUT -p tcp -m tcp --dport 0-65535 -j ACCEPT
 	iptables -I INPUT -p udp -m udp --dport 0-65535 -j ACCEPT
@@ -67,7 +80,7 @@ install_ssr(){
 	systemctl stop firewalld.service
 	systemctl disable firewalld.service
 	chkconfig iptables off
-	echo 'stop iptables、firewalld。'
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Stop iptables、firewalld!'
 }
 
 install_supervisord(){
@@ -79,7 +92,7 @@ install_supervisord(){
 	chkconfig supervisord on
 	wget https://github.com/glzjin/ssshell-jar/raw/master/supervisord.conf -O /etc/supervisord.conf
 	wget https://github.com/glzjin/ssshell-jar/raw/master/supervisord -O /etc/init.d/supervisord
-	echo 'setting supervisord'
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Setting supervisord!'
 echo "[program:ssr]
 command=python /root/shadowsocksr/server.py 
 autorestart=true
@@ -87,7 +100,7 @@ autostart=true
 user=root" > /etc/supervisord.conf
 echo "ulimit -n 1024000" >> /etc/init.d/supervisord
 service supervisord restart
-echo 'supervisord inatall complete!'
+Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' supervisord inatall complete!'
 }
 
 open_bbr(){
@@ -117,9 +130,9 @@ auto_reboot(){
 }
 
 Colorset
-Logprefix;echo ${CYELLOW}'[INFO]Install wget, git!'${CEND}
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install wget, git!'
 yum -y install git wget
-Logprefix;echo ${CYELLOW}'[INFO]Install Development Tools'${CEND}
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install Development Tools'
 yum -y groupinstall "Development Tools"
 clear
 echo ' Note: This script is written based on centos7, other systems may have problems'
