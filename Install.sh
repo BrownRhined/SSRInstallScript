@@ -69,7 +69,6 @@ install_ssr(){
 	echo "precedence ::ffff:0:0/96 100">>/etc/gai.conf
 	
 	rm -rf Install.sh
-	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' SSR inatall complete!'
 	cd /root/
 	iptables -I INPUT -p tcp -m tcp --dport 0-65535 -j ACCEPT
 	iptables -I INPUT -p udp -m udp --dport 0-65535 -j ACCEPT
@@ -81,6 +80,7 @@ install_ssr(){
 	systemctl disable firewalld.service
 	chkconfig iptables off
 	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Stop iptables、firewalld!'
+	Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' SSR inatall complete!'
 }
 
 install_supervisord(){
