@@ -145,11 +145,12 @@ auto_reboot(){
 
 Colorset
 echo ' Note: This script is written based on centos7, other systems may have problems'
-echo ' 1. Install SSR'
-echo ' 2. Install BBR'
-echo ' 3. Install Supervisord'
-echo ' 4. Set scheduled restart'
-echo ' 5. AliYunServicesClear'
+echo ' 1. System setting'
+echo ' 2. Install SSR'
+echo ' 3. Install BBR'
+echo ' 4. Install Supervisord'
+echo ' 5. Set scheduled restart'
+echo ' 6. AliYunServicesClear'
 stty erase '^H' && read -p " Please Input Number [1-6]:" num
 case "$num" in
 	1)
