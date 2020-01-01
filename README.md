@@ -20,14 +20,15 @@ bash -c "$(curl -sS https://raw.githubusercontent.com/BrownRhined/SSRInstallScri
 <br>複製上方代碼並執行開始安裝。
 ##腳本功能
 ````
-1.檢查是否安装了git、libsodium（可能會有點慢）。
-2.選擇安裝功能，
-  1）SSR
-  2）BBR
-  3）安裝守護程序
-  4）定時重啟節點
-3.BBR安装之後需要reboot。
-4.SSR安装之後請手動更改配置即可。
+1.選擇安裝功能，
+  1）系統設定 (設定DNS、安裝wget, git, Development Tools)
+  2）SSR (包含檢查是否安装了git、libsodium（可能會有點慢）)
+  3）BBR
+  4）安裝守護程序
+  5）定時重啟節點
+  6）AliYunServicesClear
+2.BBR安装之後需要reboot。
+3.SSR安装之後請手動更改配置即可。
 配置文件 userapiconfig.py
 API接口：mudbjson, sspanelv2, sspanelv3, sspanelv3ssr, glzjinmod, legendsockssr，根据面板要求输入。
 mysql伺服器地址：SSR和資料庫在同一台伺服器输入127.0.0.1，遠端節點填寫資料庫IP。
@@ -39,8 +40,8 @@ SSR节点ID（nodeid）:前端建立节点时的ID。
 加密（method）：SSR的加密方式，aes-256-cfb等。
 协议（protocol）：SSR的协议插件，origin等。
 混淆（obfs）：SSR的混淆插件，plain等。
-5.配置完成會關閉iptables、firewalld，大佬請自行设置。
-6.輸入 pthon server.py 進行測試
+4.配置完成會關閉iptables、firewalld，大佬請自行设置。
+5.輸入 pthon server.py 進行測試
 ````
 ##建议關閉 SELinux:
 ````
