@@ -31,6 +31,20 @@ function Logprefix() {
   echo -n 'WitMantoBot >> '
 }
 
+system_setting(){
+clear
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Setting DNS!'
+ > /etc/resolv.conf
+echo "nameserver 168.95.192.1">>/etc/resolv.conf
+echo "nameserver 8.8.8.8">>/etc/resolv.conf
+echo "nameserver 1.1.1.1">>/etc/resolv.conf
+chattr +i /etc/resolv.conf
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install wget, git!'
+yum -y install git wget
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install Development Tools'
+yum -y groupinstall "Development Tools"
+Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' System setting complete!'
+}
 install_ssr(){
 	clear
 	cd /root/
@@ -130,35 +144,33 @@ auto_reboot(){
 }
 
 Colorset
-Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install wget, git!'
-yum -y install git wget
-Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install Development Tools'
-yum -y groupinstall "Development Tools"
-clear
 echo ' Note: This script is written based on centos7, other systems may have problems'
 echo ' 1. Install SSR'
 echo ' 2. Install BBR'
 echo ' 3. Install Supervisord'
 echo ' 4. Set scheduled restart'
 echo ' 5. AliYunServicesClear'
-stty erase '^H' && read -p " Please Input Number [1-5]:" num
+stty erase '^H' && read -p " Please Input Number [1-6]:" num
 case "$num" in
 	1)
-	install_ssr
+	system_setting
 	;;
 	2)
-	open_bbr
+	install_ssr
 	;;
 	3)
-	install_supervisord
+	open_bbr
 	;;
 	4)
-	auto_reboot
+	install_supervisord
 	;;
 	5)
+	auto_reboot
+	;;
+	6)
 	AliYunServicesClear
 	;;
 	*)
-	echo 'Please Input Number[1-5]'
+	echo 'Please Input Number[1-6]'
 	;;
 esac
