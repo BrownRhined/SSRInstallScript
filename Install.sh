@@ -33,17 +33,20 @@ function Logprefix() {
 
 system_setting(){
 clear
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install wget, git!'
+yum -y install git wget
+Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install Development Tools'
+yum -y groupinstall "Development Tools"
+Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' System setting complete!'
+}
+dns_setting(){
+clear
 Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Setting DNS!'
  > /etc/resolv.conf
 echo "nameserver 168.95.192.1">>/etc/resolv.conf
 echo "nameserver 8.8.8.8">>/etc/resolv.conf
 echo "nameserver 1.1.1.1">>/etc/resolv.conf
 chattr +i /etc/resolv.conf
-Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install wget, git!'
-yum -y install git wget
-Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install Development Tools'
-yum -y groupinstall "Development Tools"
-Logprefix;echo ${CGREEN}'[SUCCESS]'${CEND}' System setting complete!'
 }
 install_ssr(){
 	clear
@@ -146,32 +149,36 @@ auto_reboot(){
 Colorset
 echo ' Note: This script is written based on centos7, other systems may have problems'
 echo ' 1. System setting'
-echo ' 2. Install SSR'
-echo ' 3. Install BBR'
-echo ' 4. Install Supervisord'
-echo ' 5. Set scheduled restart'
-echo ' 6. AliYunServicesClear'
-stty erase '^H' && read -p " Please Input Number [1-6]:" num
+echo ' 2. DNS setting'
+echo ' 3. Install SSR'
+echo ' 4. Install BBR'
+echo ' 5. Install Supervisord'
+echo ' 6. Set scheduled restart'
+echo ' 7. AliYunServicesClear'
+stty erase '^H' && read -p " Please Input Number [1-7]:" num
 case "$num" in
 	1)
 	system_setting
 	;;
 	2)
-	install_ssr
+	dns_setting
 	;;
 	3)
-	open_bbr
+	install_ssr
 	;;
 	4)
-	install_supervisord
+	open_bbr
 	;;
 	5)
-	auto_reboot
+	install_supervisord
 	;;
 	6)
+	auto_reboot
+	;;
+	7)
 	AliYunServicesClear
 	;;
 	*)
-	echo 'Please Input Number[1-6]'
+	echo 'Please Input Number[1-7]'
 	;;
 esac
