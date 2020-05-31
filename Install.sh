@@ -81,6 +81,8 @@ install_ssr(){
 	pip install ndg-httpsclient==0.4.2
 	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install pyasn1==0.2.2!'
 	pip install pyasn1==0.2.2
+	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' Install idna!'
+	pip install idna
 	#pip install requests==2.9
 	Logprefix;echo ${CYELLOW}'[INFO]'${CEND}' IPv4 over IPv6 !'
 	echo "precedence ::ffff:0:0/96 100">>/etc/gai.conf
